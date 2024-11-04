@@ -1,0 +1,665 @@
+/* Variables de colores */
+:root {
+    --primary-color: #3b82f6;
+    --text-color: #1f2937;
+    --bg-color: #ffffff;
+    --border-color: #e5e7eb;
+    --hover-bg: #f3f4f6;
+}
+
+/* Modo oscuro */
+.dark-mode {
+    --text-color: #f3f4f6;
+    --bg-color: #111827;
+    --border-color: #374151;
+    --hover-bg: #1f2937;
+}
+
+/* Estilos de scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+/* Reset de estilos y configuración global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Navegación */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-link,
+.theme-toggle {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.nav-link:hover,
+.theme-toggle:hover {
+    background-color: var(--hover-bg);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Botón de menú */
+.menu-button {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.menu-button:hover {
+    color: var(--primary-color);
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu .nav-link {
+    display: block;
+    padding: 1rem;
+    width: 100%;
+    text-align: left;
+}
+
+/* Secciones */
+.section {
+    display: none;
+    padding: 4.5rem 0 4rem;
+}
+
+.section.active {
+    display: block;
+}
+
+/* Slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 3rem;
+    background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
+}
+
+.slide-text {
+    max-width: 600px;
+    color: white;
+}
+
+.slide-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.slide-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.slide-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.slider-btn.prev {
+    left: 1rem;
+}
+
+.slider-btn.next {
+    right: 1rem;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.slider-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-dot.active {
+    background: white;
+}
+
+/* Proyectos */
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.project-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.project-description {
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 1rem;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    padding: 0.25rem 0.75rem;
+    background-color: var(--hover-bg);
+    border-radius: 1rem;
+    font-size: 0.875rem;
+}
+
+.project-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    transition: all 0.3s;
+}
+
+.skill-card:hover {
+    border-color: var(--primary-color);
+}
+
+.skill-category {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.skill-list {
+    list-style: none;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-item i {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+}
+
+/* Botón de Sobre Mí */
+.about-scroll-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.about-scroll-btn:hover {
+    transform: translateY(-2px);
+    background-color: #2563eb;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Sección Sobre Mí */
+.about-section {
+    padding: 6rem 0;
+    background-color: var(--bg-color);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text {
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.cv-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: all 0.3s ease;
+}
+
+.cv-button:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Sección de Lenguajes */
+.languages-section {
+    margin-top: 4rem;
+}
+
+.languages-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--text-color);
+}
+
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.language-card {
+    padding: 2rem;
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.language-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.language-card h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.language-card p {
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+/* Botón de Chatbot */
+.chatbot-btn {
+    position: fixed; /* Fijar el botón en una posición fija */
+    bottom: 70px; /* Ajustar la distancia desde la parte inferior */
+    right: 10px; /* Espacio desde la derecha */
+    background-color: var(--primary-color); /* Color de fondo del botón */
+    color: white; /* Color del texto o ícono */
+    border: none; /* Sin borde */
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: all 0.3s ease;
+}
+
+.chatbot-btn:hover {
+    background-color: #2563eb; /* Color al pasar el ratón */
+}
+
+/* Ocultar el texto en pantallas pequeñas */
+@media (max-width: 768px) {
+    .chatbot-btn .btn-text {
+        display: none; /* Ocultar el texto */
+    }
+}
+
+@media (min-width: 769px) {
+    .chatbot-btn .btn-text {
+        display: inline; /* Mostrar el texto */
+    }
+}
+
+/* Ajustar el ícono del botón */
+.chatbot-btn .btn-icon {
+    font-size: 1.5rem; /* Tamaño del ícono */
+}
+.bottom-navbar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-top: 1px solid var(--border-color);
+}
+
+.bottom-navbar .bottom-nav-link {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bottom-navbar .bottom-nav-link:hover {
+    background-color: var(--hover-bg);
+}
+
+.bottom-navbar .bottom-nav-link i {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.bottom-navbar .bottom-nav-link.active {
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .bottom-navbar {
+        display: flex;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .languages-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .about-text {
+        font-size: 1.125rem;
+        padding: 0 1rem;
+    }
+
+    .section-title,
+    .languages-title {
+        font-size: 2rem;
+    }
+
+    .slide-title {
+        font-size: 2rem;
+    }
+
+    .slide-content {
+        padding: 2rem;
+    }
+
+    .slider-container {
+        height: 400px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        right: 0;
+    }
+
+    .bottom-navbar {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-brand {
+        font-size: 1.25rem;
+    }
+
+    .slider-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .slide-title,
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1rem;
+    }
+
+    .skill-category {
+        font-size: 0.875rem;
+    }
+}

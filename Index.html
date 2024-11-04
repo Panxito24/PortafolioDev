@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Ormazabal</title>
+    <link rel="stylesheet" href="Index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="highlight">Dev</span>.Ormazabal
+        </div>
+        <div class="nav-links">
+            <button class="nav-link active" data-section="home">Inicio</button>
+            <button class="nav-link" data-section="projects">Proyectos</button>
+            <button class="nav-link" data-section="skills">Habilidades</button>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sección Home con Slider -->
+    <section id="home" class="section active">
+        <div class="container">
+            <div class="slider-container">
+                <div class="slider" id="slider">
+                    <!-- Los slides se generarán con JavaScript -->
+                </div>
+                <button class="slider-btn prev" id="prevSlide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn next" id="nextSlide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="slider-dots" id="sliderDots">
+                    <!-- Los dots se generarán con JavaScript -->
+                </div>
+            </div>
+        </div>
+        <!-- Botón Sobre Mí fuera del slider -->
+        <div class="container">
+            <button class="about-scroll-btn" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+                Sobre Mí <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Mí -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Técnico en Programación y Análisis de Sistemas con experiencia en desarrollo de software, análisis de datos y soporte de sistemas. He trabajado en proyectos académicos aplicando metodologías ágiles y tecnologías actualizadas. Mi perfil está alineado con el marco SFIA, permitiéndome desarrollar sistemas de información seguros y soluciones informáticas de calidad. Soy adaptable, colaborativo y comprometido con el aprendizaje continuo y la búsqueda de soluciones eficientes.
+                </p>
+                <a href="/cv.pdf" download class="cv-button">
+                    Descargar CV <i class="fas fa-download"></i>
+                </a>
+            </div>
+
+            <div class="languages-section">
+                <h3 class="languages-title">Tecnologías Favoritas</h3>
+                <div class="languages-grid">
+                    <div class="language-card">
+                        <i class="fab fa-js"></i>
+                        <h4>JavaScript</h4>
+                        <p>Desarrollo Frontend y Backend con Node.js</p>
+                    </div>
+                    <div class="language-card">
+                        <i class="fab fa-react"></i>
+                        <h4>React</h4>
+                        <p>Desarrollo de interfaces modernas y responsivas</p>
+                    </div>
+                    <div class="language-card">
+                        <i class="fab fa-python"></i>
+                        <h4>Python</h4>
+                        <p>Análisis de datos y automatización</p>
+                    </div>
+                    <div class="language-card">
+                        <i class="fab fa-node-js"></i>
+                        <h4>Node.js</h4>
+                        <p>Desarrollo de APIs y servicios backend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="projects-grid" id="projects-container">
+                <!-- Los proyectos se generarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Habilidades y Experiencia</h2>
+            <div class="skills-grid" id="skills-container">
+                <!-- Las habilidades se generarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Botón de Chatbot -->
+    <button class="chatbot-btn" onclick="openChatbot()">
+        <i class="btn-icon fas fa-comments"></i> <!-- Aquí puedes usar el ícono que prefieras -->
+        <span class="btn-text">ChatBot</span> <!-- Texto que se oculta en pantallas pequeñas -->
+    </button>
+
+    <!-- Navbar Inferior para Modo Responsive -->
+    <nav class="bottom-navbar">
+        <button class="bottom-nav-link" data-section="home">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </button>
+        <button class="bottom-nav-link" data-section="projects">
+            <i class="fas fa-briefcase"></i>
+            <span>Proyectos</span>
+        </button>
+        <button class="bottom-nav-link" data-section="skills">
+            <i class="fas fa-cogs"></i>
+            <span>Habilidades</span>
+        </button>
+    </nav>
+
+    <script src="Index.js" defer></script>
+    <script src="slides.js" defer></script>
+    <script>
+        function openChatbot() {
+            // Lógica para abrir el chatbot
+            alert('Chatbot abierto');
+        }
+    </script>
+</body>
+</html>
